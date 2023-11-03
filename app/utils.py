@@ -46,7 +46,7 @@ def paraphrase_text(model, tokenizer, device, input_text, num_return_sequences=1
     return paraphrashed_text
 
 def correct_grammar(model, tokenizer, device, input_text, num_return_sequences=1):
-    text =  input_text
+    text =  input_text + "."   # if a . is not appended at the end, the model starts to repeat
 
     encoding = tokenizer.encode_plus(text, return_tensors="pt")
     input_ids, attention_masks = encoding["input_ids"].to(device), encoding["attention_mask"].to(device)
